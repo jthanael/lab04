@@ -1,0 +1,269 @@
+Python Lab: Hangman Game
+In this lab, you will use the Python programming language to build a text-based clone of the classic word game, Hangman. Several variations of this game have been around since at least 1894, including a tabletop game of the same name by Hasbro and the gameshow, Wheel of Fortune.
+
+
+
+Hangman is a word-guessing game in which players try to identify a hidden word by guessing one letter at a time. Each incorrect guess adds another part to the gallows and hanging figure, while correctly guessing all the letters wins the game.
+
+
+
+Alternative Theme
+If you are uncomfortable with the traditional Hangman theme, you may use a different theme for this assignment. The programming requirements remain the same; only the game's visual theme and terminology need to change.
+
+
+
+For example, you could create a game where the player is trying to:
+
+Save a character before time runs out
+Complete a drawing one piece at a time
+Repair a robot
+Build a spaceship
+Escape from a maze
+Reveal a hidden picture
+
+
+If you choose an alternative theme, please make sure it still provides the same basic gameplay and satisfies all of the programming requirements in this lab.
+
+
+
+Whether or not you adapt an alternative theme, I hope you enjoy working on this lab as I had building it! :-)
+
+
+
+The level of difficulty of the course is being turned up a notch with this assignment. You will need to think more about how to keep track of program state and how to display program components in the correct place.
+
+
+
+Learning Outcomes
+Upon completion of this lab, you will know how to:
+
+Use lists and strings to manage game data.
+Use loops and conditional statements to control program flow.
+Validate and process user input.
+Use random selection to make a game more dynamic.
+Create and use functions to organize a Python program.
+Track and update information during program execution.
+Use indexes to work with individual elements of a string or list.
+Design a simple text-based game using Python.
+
+
+Software Requirements
+Setup
+1. Add a new folder called lab04 to your repository. Build your project in this folder.
+
+
+
+2. Create a list called wordlist in which you'll store a list of words (of your own choosing). You will use the random library's randint function to randomly select a word from this list at the start of each game.
+
+You can use the following word list to get started:
+
+wordlist = [
+    "hangman",
+    "llama",
+    "python"
+]
+
+
+The following code demonstrates how to use Python's random number generator:
+
+import random
+ 
+'''
+random.randint(a, b)
+Return a random integer N such that a <= N <= b. Alias for randrange(a, b+1).
+'''
+random_number = random.randint(0, len(wordlist) - 1)import random
+
+
+3. Create an empty list called bad_guesses, in which you'll store (you guessed it) the letters a player got wrong. Bad guesses will be displayed to the player with each iteration of the main program loop.
+
+
+
+4. Use a while loop to keep the program running until the game is finished.
+
+
+
+Initial Screen
+5. Upon starting, the game will display a welcome message, a board showing the letters that have not been correctly guessed, an empty list showing the number of bad guesses, and a prompt for the player to enter their first guess.
+
+
+
+Hint: Remember the continue keyword we used in class to move to the next iteration of the loop.
+
+Welcome to HANGMAN!
+ 
+['_', '_', '_', '_', '_', '_', '_']
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Bad Guesses: []
+ 
+Guess a letter: 
+
+
+Invalid Input
+6. Upon entering a guess, the game should validate a player's input. If bad input is entered, an appropriate message should be displayed to the player and the game should allow them to try again.
+
+Welcome to HANGMAN!
+ 
+['_', '_', 'a', '_', 'a']
+ 
++---+
+|
+|
+|
+|    
+=======
+ 
+Bad Guesses: ['r']
+ 
+Guess a letter: r
+ 
+⚠️ You already guessed that letter!
+ 
+Press [enter] to continue.
+
+
+Bad Guess
+7. Upon entering a bad guess, the next gallows sequence displays and the incorrect letter is added to the list of bad guesses before the player is prompted to enter another guess.
+
+Welcome to HANGMAN!
+ 
+['_', '_', '_', '_', '_', '_', '_']
+ 
++---+
+|
+|
+|
+|    
+=======
+ 
+Bad Guesses: ['r']
+ 
+Guess a letter: r
+ 
+❌ 'r' is not in the word.
+ 
+Press [enter] to continue.
+
+
+Correct Guess
+8. When the player enters a correct guess, the letter(s) will display on the letter board and the user will be prompted to enter their next guess.
+
+Welcome to HANGMAN!
+ 
+['_', 'a', '_', '_', '_', 'a', '_']
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Bad Guesses: []
+ 
+Guess a letter: 
+9. When all the letters in the word have been correctly guessed, the game loop ends, and a message displays informing the player they won.
+
+Welcome to HANGMAN!
+ 
+['l', 'l', 'a', '_', 'a']
+ 
++---+
+|
+|
+|
+|    
+=======
+ 
+Bad Guesses: ['r']
+ 
+Guess a letter: m
+ 
+✅ 'm' is in the word!
+ 
+Press [enter] to continue.
+ 
+🎉 YOU WON! The word was 'llama'
+ 
+Thank you for playing!
+10. When a player makes 6 incorrect guesses, the full gallows image displays, the game loop ends, and a message displays informing the player they lost.
+
+💀 YOU LOST! The word was 'python'
+ 
+Thank you for playing!
+
+
+Deliverable
+1. Commit and push your changes to GitHub.
+
+
+
+2. Submit to Blackboard your GitHub URL pointing to your project.
+
+
+
+ASCII Gallows Artwork
+I've included my ASCII artwork to help you out! Copy and paste it into your print statements as needed.
+
+
+
+First Mistake: Ready the Gallows!
++---+
+|
+|
+|
+|    
+=======
+
+
+Second Mistake: Add the Rope!
++---+
+|   |
+|
+|
+|   
+=======
+
+
+Third Mistake: Add the Head.
++---+
+|   |
+|   0
+|
+|    
+=======
+
+
+Fourth Mistake: Add the Torso.
++---+
+|   |
+|   0
+|   |
+|   
+=======
+
+
+Fifth Mistake: Add the Arms.
++---+
+|   |
+|   0
+|  /|\ 
+|
+=======
+
+
+Sixth Mistake: Add the Legs.
++---+
+|   |
+|   0
+|  /|\ 
+|  / \ 
+=======
